@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Information</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        form#serverbuttonForm1 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            margin-bottom: 16px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #ecf0f1;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Server Information</h1>
+    </header>
+
+    <main>
+        <form id="serverForm1" class="server-form">
+            <h2>-- ISBE 11 --</h2>
+            <label for="serverName1">Server Name:</label>
+            <input type="text" id="serverName1" name="serverName1" value="Server1">
+
+            <label for="portals1">Portals:</label>
+            <input type="text" id="portals1" name="portals1" value="Default Portals">
+
+            <label for="jdkVersion1">JDK Version:</label>
+            <input type="text" id="jdkVersion1" name="jdkVersion1" value="JDK 11">
+
+            <label for="s3Deploy1">S3 Deploy:</label>
+            <input type="text" id="s3Deploy1" name="s3Deploy1" value="Default S3 Deploy">
+
+            <label for="url1">URL:</label>
+            <input type="text" id="url1" name="url1" value="http://server1.example.com">
+
+            <label for="frontendBranch1">Frontend Branch:</label>
+            <input type="text" id="frontendBranch1" name="frontendBranch1" value="Default Frontend Branch">
+
+            <label for="backendBranch1">Backend Branch:</label>
+            <input type="text" id="backendBranch1" name="backendBranch1" value="Default Backend Branch">
+
+            <label for="agentDetails1">Agent Details:</label>
+            <textarea id="agentDetails1" name="agentDetails1">Default Agent Details</textarea>
+
+            <label for="batches1">Batches:</label>
+            <input type="text" id="batches1" name="batches1" value="Default Batches">
+
+            <label for="jbossVersion1">JBoss Version:</label>
+            <input type="text" id="jbossVersion1" name="jbossVersion1" value="Default JBoss Version">
+
+            <label for="updateApplicationProperties1">Update Application Properties:</label>
+            <textarea id="updateApplicationProperties1" name="updateApplicationProperties1">Default Update Application Properties</textarea>
+
+        </form>
+
+        <!-- Repeat the above form structure for Server 2, 3, and 4 with appropriate IDs -->
+
+        <button type="button" onclick="saveServerInfo()">Save Information</button>
+        <br>
+        <br>
+         <div id ="serverbuttonForm1">
+            <a href="server_2.html"><button type="button">server2</button></a>
+            <a href="server_3.html"><button type="button">server3</button></a>
+            <a href="server_4.html"><button type="button">server4</button></a>
+        </div>
+
+
+
+        <div id="displayInfo" class="server-info"></div>
+    </main>
+
+    <script>
+        function saveServerInfo() {
+            // Retrieve values from each form and display them
+            const displayInfo = document.getElementById("displayInfo");
+            displayInfo.innerHTML = "";
+
+            for (let i = 1; i <= 4; i++) {
+                const serverName = document.getElementById(`serverName${i}`).value;
+                const portals = document.getElementById(`portals${i}`).value;
+                const jdkVersion = document.getElementById(`jdkVersion${i}`).value;
+                const s3Deploy = document.getElementById(`s3Deploy${i}`).value;
+                const url = document.getElementById(`url${i}`).value;
+                const frontendBranch = document.getElementById(`frontendBranch${i}`).value;
+                const backendBranch = document.getElementById(`backendBranch${i}`).value;
+                const agentDetails = document.getElementById(`agentDetails${i}`).value;
+                const batches = document.getElementById(`batches${i}`).value;
+                const jbossVersion = document.getElementById(`jbossVersion${i}`).value;
+                const updateApplicationProperties = document.getElementById(`updateApplicationProperties${i}`).value;
+
+                displayInfo.innerHTML += `
+                    <div class="server-info">
+                        <h2>Server ${i}</h2>
+                        <p><strong>Server Name:</strong> ${serverName}</p>
+                        <p><strong>Portals:</strong> ${portals}</p>
+                        <p><strong>JDK Version:</strong> ${jdkVersion}</p>
+                        <p><strong>S3 Deploy:</strong> ${s3Deploy}</p>
+                        <p><strong>URL:</strong> ${url}</p>
+                        <p><strong>Frontend Branch:</strong> ${frontendBranch}</p>
+                        <p><strong>Backend Branch:</strong> ${backendBranch}</p>
+                        <p><strong>Agent Details:</strong> ${agentDetails}</p>
+                        <p><strong>Batches:</strong> ${batches}</p>
+                        <p><strong>JBoss Version:</strong> ${jbossVersion}</p>
+                        <p><strong>Update Application Properties:</strong> ${updateApplicationProperties}</p>
+                        <!-- Add more lines as needed -->
+                    </div>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>
